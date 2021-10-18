@@ -4,12 +4,11 @@ namespace GildedRose.Console
 {
     class Program
     {
-        IList<Item> Items;
         static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
 
-            var app = new Program()
+            var app = new Inn()
                           {
                               Items = new List<Item>
                                           {
@@ -25,14 +24,17 @@ namespace GildedRose.Console
                                                   },
                                               new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
                                           }
-
                           };
 
             app.UpdateQuality();
 
             System.Console.ReadKey();
-
         }
+    }
+
+    public class Inn
+    {
+        public IList<Item> Items {get; init;}
 
         public void UpdateQuality()
         {
@@ -57,7 +59,7 @@ namespace GildedRose.Console
                         //Backstage passes has extra quality increases
                         if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                         {   //If the concert is within 10 days
-                            if (Items[i].SellIn <= 1)
+                            if (Items[i].SellIn <= 10)
                             {
                                 if (Items[i].Quality < 50)
                                 {   //The quality rises by 2 (the one before and this one)
@@ -113,16 +115,30 @@ namespace GildedRose.Console
                 }
             }
         }
-
     }
 
     public class Item
     {
         public string Name { get; set; }
-
+        
         public int SellIn { get; set; }
-
+        
         public int Quality { get; set; }
+        /*public string Name { get; init; }
+
+        public int SellIn {
+            get {return SellIn;}
+            set {if (value >= 0) {SellIn = value;}}
+            }
+        
+        public int Quality {
+            get {return Quality;}
+            set {if (value >= 0 && value <= 50) {Quality = value;}
+                else {
+                    if (value > 50) {Quality = 50;}
+                    if (value < 0) {Quality = 0;}
+                }}
+            }*/
     }
 
 }

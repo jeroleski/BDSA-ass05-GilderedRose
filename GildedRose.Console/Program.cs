@@ -28,6 +28,8 @@ namespace GildedRose.Console
 
             app.UpdateQuality();
 
+            System.Console.WriteLine(app.ToString());
+
             System.Console.ReadKey();
         }
     }
@@ -114,6 +116,41 @@ namespace GildedRose.Console
                     }
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            var longestName = 9;
+            var longestSellIn = 7;
+            var longestQuality = 7;
+            for (var i = 1; i < Items.Count; i++)
+            {
+                if (Items[i].Name.Length > longestName) longestName = Items[i].Name.Length;
+                if ((""+Items[i].SellIn).Length > longestSellIn) longestSellIn = (""+Items[i].SellIn).Length;
+                if ((""+Items[i].Quality).Length > longestQuality) longestQuality = (""+Items[i].Quality).Length;
+            }
+            
+            var table = extendString("Item Name", longestName, true) + "|" + 
+                        extendString("Sell In", longestSellIn, true) + "|" + 
+                        extendString("Quality", longestQuality, true) + "\n";
+            table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
+            for (var i = 0; i < Items.Count; i++)
+            {
+                table += extendString(Items[i].Name, longestName, true) + "|" + 
+                        extendString(""+Items[i].SellIn, longestSellIn, false) + "|" + 
+                        extendString(""+Items[i].Quality, longestQuality, false) + "\n";
+            }
+            table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
+
+            return table;
+
+            string extendString(string s, int length, bool front)
+            {
+                if (front) return s + new string (' ', length - s.Length);
+                else return new string (' ', length - s.Length) + s;
+            }
+
+            string makeDashes(int length) => new string('-', length);
         }
     }
 

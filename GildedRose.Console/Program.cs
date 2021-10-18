@@ -44,7 +44,7 @@ namespace GildedRose.Console
                     {   //Sulfuras never decreases
                         if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {   //Standard degrades
-                            Items[i].Quality = Items[i].Quality - 1;
+                            Items[i].Quality -= 1;
                         }
                     }
                 }
@@ -52,24 +52,24 @@ namespace GildedRose.Console
                 {   //A quality can never extend 50
                     if (Items[i].Quality < 50)
                     {   //Standart Special items quality increaese
-                        Items[i].Quality = Items[i].Quality + 1;
+                        Items[i].Quality += 1;
                         
                         //Backstage passes has extra quality increases
                         if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                         {   //If the concert is within 10 days
-                            if (Items[i].SellIn < 11)
+                            if (Items[i].SellIn <= 1)
                             {
                                 if (Items[i].Quality < 50)
                                 {   //The quality rises by 2 (the one before and this one)
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    Items[i].Quality += 1;
                                 }
                             }
                             //If the concert is within 5 days
-                            if (Items[i].SellIn < 6)
+                            if (Items[i].SellIn <= 5)
                             {
                                 if (Items[i].Quality < 50)
                                 {   //The quality rises by 3 (two before and this one)
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    Items[i].Quality += 1;
                                 }
                             }
                         }
@@ -80,7 +80,7 @@ namespace GildedRose.Console
                 //exept Sulfuras never has to be sold
                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    Items[i].SellIn -= 1;
                 }
                 
                 //If a experation date is expired
@@ -94,20 +94,20 @@ namespace GildedRose.Console
                             {   //And the item is not Sulfuras
                                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {   //The quality decreases an extra amount
-                                    Items[i].Quality = Items[i].Quality - 1;
+                                    Items[i].Quality -= 1;
                                 }
                             }
                         }   //For Backstage Passes
                         else
                         {   //The quality will drop to 0
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                            Items[i].Quality = 0;
                         }
                     }   //For Aged Brie
                     else
                     {
                         if (Items[i].Quality < 50)
                         {   //Aged Brie quality rises after experation
-                            Items[i].Quality = Items[i].Quality + 1;
+                            Items[i].Quality += 1;
                         }
                     }
                 }

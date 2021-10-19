@@ -2,9 +2,9 @@
 
 namespace GildedRose.Console
 {
-    static class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
 
@@ -42,10 +42,10 @@ namespace GildedRose.Console
                 if (newQuality < 0) {item.Quality = 0;}
             }
         }
-        public static bool IsAgedBrie(this Item item) => item.Name.ToLower().Contains("aged brie");
-        public static bool IsBackstagePass(this Item item) => item.Name.ToLower().Contains("backstage pass");
-        public static bool IsSulfuras(this Item item) => item.Name.ToLower().Contains("sulfuras");
-        public static bool IsConjured(this Item item) => item.Name.ToLower().Contains("conjured");
+        public static bool IsAgedBrie(this Item item) => item.Name.Replace(" ", "").ToLower().Contains("agedbrie");
+        public static bool IsBackstagePass(this Item item) => item.Name.Replace(" ", "").ToLower().Contains("backstagepass");
+        public static bool IsSulfuras(this Item item) => item.Name.Replace(" ", "").ToLower().Contains("sulfuras");
+        public static bool IsConjured(this Item item) => item.Name.Replace(" ", "").ToLower().Contains("conjured");
 
         public static bool IsExpired(this Item item) => item.SellIn < 0;
     }

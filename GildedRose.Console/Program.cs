@@ -42,5 +42,11 @@ namespace GildedRose.Console
                 if (newQuality < 0) {item.Quality = 0;}
             }
         }
+        public static bool IsAgedBrie(this Item item) => item.Name.ToLower().Contains("aged brie");
+        public static bool IsBackstagePass(this Item item) => item.Name.ToLower().Contains("backstage pass");
+        public static bool IsSulfuras(this Item item) => item.Name.ToLower().Contains("sulfuras");
+        public static bool IsConjured(this Item item) => item.Name.ToLower().Contains("conjured");
+
+        public static bool IsExpired(this Item item) => item.SellIn < 0;
     }
 }

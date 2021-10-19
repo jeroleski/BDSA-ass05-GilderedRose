@@ -9,96 +9,77 @@ namespace GildedRose.Console
         public void UpdateQuality()
         {
             for (var i = 0; i < Items.Count; i++)
-            {   //NORMAL items, which decreases in value
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                {   //only if the quality is positive
-                    if (Items[i].Quality > 0)
-                    {   //Sulfuras never decreases
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {   //Standard degrades
-                            Items[i].Quality -= 1;
-                        }
+            {
+                var item = Items[i];
+                //NORMAL items, which decreases in value
+                if (! item.IsAgedBrie() && ! item.IsBackstagePass())
+                {   //Sulfuras never decreases
+                    if (! item.IsSulfuras())
+                    {   //Standard degrades
+                        //Extension method checks for non-negative setting
+                        item.ChangeQuality(-1);
                     }
                 }
                 else
-                {   //A quality can never extend 50
-                    if (Items[i].Quality < 50)
-                    {   //Standart Special items quality increaese
-                        Items[i].Quality += 1;
-                        
-                        //Backstage passes has extra quality increases
-                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                        {   //If the concert is within 10 days
-                            if (Items[i].SellIn <= 10)
-                            {
-                                if (Items[i].Quality < 50)
-                                {   //The quality rises by 2 (the one before and this one)
-                                    Items[i].Quality += 1;
-                                }
-                            }
-                            //If the concert is within 5 days
-                            if (Items[i].SellIn <= 5)
-                            {
-                                if (Items[i].Quality < 50)
-                                {   //The quality rises by 3 (two before and this one)
-                                    Items[i].Quality += 1;
-                                }
-                            }
+                {   //Standart Special items quality increaese
+                    item.ChangeQuality(1);
+                    
+                    //Backstage passes has extra quality increases
+                    if (item.IsBackstagePass())
+                    {   //If the concert is within 10 days
+                        if (item.SellIn <= 10)
+                        {   //The quality rises by 2 (the one before and this one)
+                            item.ChangeQuality(1);
+                            
+                        }
+                        //If the concert is within 5 days
+                        if (item.SellIn <= 5)
+                        {   //The quality rises by 3 (two before and this one)
+                            item.ChangeQuality(1);
                         }
                     }
                 }
                 
                 //Conjured items degrade double (one extra amount)
-                if (Items[i].Name == "Conjured Mana Cake")
+                if (item.IsConjured())
                 {
-                    if (Items[i].Quality > 0)
-                    {
-                        Items[i].Quality -= 1;
-                    }
+                    item.ChangeQuality(-1);
                 }
 
                 //ALL items selling days will decrease
                 //exept Sulfuras which never has to be sold
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                if (! item.IsSulfuras())
                 {
-                    Items[i].SellIn -= 1;
+                    item.SellIn -= 1;
                 }
                 
                 //If a experation date is expired
-                if (Items[i].SellIn < 0)
+                if (item.IsExpired())
                 {   //And it is not Aged Brie
-                    if (Items[i].Name != "Aged Brie")
+                    if (! item.IsAgedBrie())
                     {   //And it is not Backstage Passes
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {   //And the quality is still positive
-                            if (Items[i].Quality > 0)
-                            {   //And the item is not Sulfuras
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                                {   //The quality decreases an extra amount
-                                    Items[i].Quality -= 1;
-                                    
-                                    //Conjured items furthermore decreases double (-4 total) if it it is expired
-                                    if (Items[i].Name == "Conjured Mana Cake")
-                                    {
-                                        if (Items[i].Quality > 0)
-                                        {
-                                            Items[i].Quality -= 1;
-                                        }
-                                    }
+                        if (! item.IsBackstagePass())
+                        {   //And the item is not Sulfuras
+                            if (! item.IsSulfuras())
+                            {   //The quality decreases an extra amount
+                                item.ChangeQuality(-1);
+                                
+                                //Conjured items furthermore decreases double (-4 total) if it it is expired
+                                if (item.IsConjured())
+                                {
+                                    item.ChangeQuality(-1);
                                 }
                             }
+                            
                         }   //For Backstage Passes
                         else
                         {   //The quality will drop to 0
-                            Items[i].Quality = 0;
+                            item.Quality = 0;
                         }
                     }   //For Aged Brie
                     else
-                    {
-                        if (Items[i].Quality < 50)
-                        {   //Aged Brie quality rises after experation
-                            Items[i].Quality += 1;
-                        }
+                    {   //Quality rises after experation
+                        item.ChangeQuality(1);
                     }
                 }
             }
@@ -106,9 +87,7 @@ namespace GildedRose.Console
 
         
 
-        private bool IsAgedBrie(Item item) => item.Name.ToLower().Contains("aged brie");
-        private bool IsBackstagePass(Item item) => item.Name.ToLower().Contains("backstage pass");
-        private bool IsConjured(Item item) => item.Name.ToLower().Contains("conjured");
+        
 
         public override string ToString()
         {

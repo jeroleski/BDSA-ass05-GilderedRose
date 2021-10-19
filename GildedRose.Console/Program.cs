@@ -2,7 +2,7 @@
 
 namespace GildedRose.Console
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
@@ -31,6 +31,16 @@ namespace GildedRose.Console
             System.Console.WriteLine(app.ToString());
 
             System.Console.ReadKey();
+        }
+
+        public static void ChangeQuality(this Item item, int amount)
+        {
+            int newQuality = item.Quality + amount;
+            if (newQuality >= 0 && newQuality <= 50) {item.Quality = newQuality;}
+            else {
+                if (newQuality > 50) {item.Quality = 50;}
+                if (newQuality < 0) {item.Quality = 0;}
+            }
         }
     }
 }

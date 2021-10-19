@@ -47,9 +47,18 @@ namespace GildedRose.Console
                         }
                     }
                 }
+                
+                //Conjured items degrade double (one extra amount)
+                if (Items[i].Name == "Conjured Mana Cake")
+                {
+                    if (Items[i].Quality > 0)
+                    {
+                        Items[i].Quality -= 1;
+                    }
+                }
 
                 //ALL items selling days will decrease
-                //exept Sulfuras never has to be sold
+                //exept Sulfuras which never has to be sold
                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
                     Items[i].SellIn -= 1;
@@ -67,6 +76,15 @@ namespace GildedRose.Console
                                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {   //The quality decreases an extra amount
                                     Items[i].Quality -= 1;
+                                    
+                                    //Conjured items furthermore decreases double (-4 total) if it it is expired
+                                    if (Items[i].Name == "Conjured Mana Cake")
+                                    {
+                                        if (Items[i].Quality > 0)
+                                        {
+                                            Items[i].Quality -= 1;
+                                        }
+                                    }
                                 }
                             }
                         }   //For Backstage Passes
@@ -86,9 +104,11 @@ namespace GildedRose.Console
             }
         }
 
-        private bool IsAgedBrie(Item i) => i.Name.ToLower().Contains("aged brie");
-        private bool IsBackstagePass(Item i) => i.Name.ToLower().Contains("backstage pass");
-        private bool IsConjured(Item i) => i.Name.ToLower().Contains("conjured");
+        
+
+        private bool IsAgedBrie(Item item) => item.Name.ToLower().Contains("aged brie");
+        private bool IsBackstagePass(Item item) => item.Name.ToLower().Contains("backstage pass");
+        private bool IsConjured(Item item) => item.Name.ToLower().Contains("conjured");
 
         public override string ToString()
         {

@@ -11,7 +11,7 @@ namespace GildedRose.Tests
         {
             var inn = new Inn() {
                 Items = new List<Item> {
-                    new Item{Name = "Conjured Cheese Cake", SellIn = 4, Quality = 7}
+                    new Item{Name = "Conjured Mana Cake", SellIn = 4, Quality = 7}
                 }
             };
 
@@ -25,7 +25,7 @@ namespace GildedRose.Tests
         {
             var inn = new Inn() {
                 Items = new List<Item> {
-                    new Item{Name = "Conjured Cheese Cake", SellIn = 4, Quality = 7}
+                    new Item{Name = "Conjured Mana Cake", SellIn = 4, Quality = 7}
                 }
             };
 
@@ -42,7 +42,7 @@ namespace GildedRose.Tests
         {
             var inn = new Inn() {
                 Items = new List<Item> {
-                    new Item{Name = "Conjured Cheese Cake", SellIn = 4, Quality = 7}
+                    new Item{Name = "Conjured Mana Cake", SellIn = 4, Quality = 7}
                 }
             };
 
@@ -59,13 +59,13 @@ namespace GildedRose.Tests
         {
             var inn = new Inn() {
                 Items = new List<Item> {
-                    new Item{Name = "Conjured Coka Cola", SellIn = 0, Quality = 20}
+                    new Item{Name = "Conjured Mana Cake", SellIn = 0, Quality = 20}
                 }
             };
 
             inn.UpdateQuality();
 
-            Assert.Equal(18, inn.Items[0].Quality);
+            Assert.Equal(16, inn.Items[0].Quality);
         }
     }
 }

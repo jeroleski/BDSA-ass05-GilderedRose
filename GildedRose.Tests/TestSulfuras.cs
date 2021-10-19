@@ -7,65 +7,32 @@ namespace GildedRose.Tests
     public class TestSulfuras
     {
         [Fact]
-        public void Conjured_quality_drops_by_2_when_updating_1_time()
+        public void Sulfuras_quality_never_drops()
         {
             var inn = new Inn() {
                 Items = new List<Item> {
-                    new Item{Name = "Conjured Mana Cake", SellIn = 4, Quality = 7}
+                    new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 2, Quality = 80}
                 }
             };
 
             inn.UpdateQuality();
+            inn.UpdateQuality();
 
-            Assert.Equal(5, inn.Items[0].Quality);
+            Assert.Equal(80, inn.Items[0].Quality);
         }
 
         [Fact]
-        public void Conjured_quality_drops_by_6_when_updating_3_times()
+        public void Sulfuras_SellIn_never_drops()
         {
             var inn = new Inn() {
                 Items = new List<Item> {
-                    new Item{Name = "Conjured Mana Cake", SellIn = 4, Quality = 7}
-                }
-            };
-
-            inn.UpdateQuality();
-            inn.UpdateQuality();
-            inn.UpdateQuality();
-
-
-            Assert.Equal(1, inn.Items[0].Quality);
-        }
-
-        [Fact]
-        public void Conjured_quality_wont_drop_below_0()
-        {
-            var inn = new Inn() {
-                Items = new List<Item> {
-                    new Item{Name = "Conjured Mana Cake", SellIn = 4, Quality = 7}
-                }
-            };
-
-            inn.UpdateQuality();
-            inn.UpdateQuality();
-            inn.UpdateQuality();
-            inn.UpdateQuality();
-
-            Assert.Equal(0, inn.Items[0].Quality);
-        }
-
-        [Fact]
-        public void Conjured_quality_drops_double_when_expired()
-        {
-            var inn = new Inn() {
-                Items = new List<Item> {
-                    new Item{Name = "Conjured Mana Cake", SellIn = 0, Quality = 20}
+                    new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 2, Quality = 80}
                 }
             };
 
             inn.UpdateQuality();
 
-            Assert.Equal(16, inn.Items[0].Quality);
+            Assert.Equal(2, inn.Items[0].SellIn);
         }
     }
 }

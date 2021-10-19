@@ -147,7 +147,7 @@ namespace GildedRose.Tests
         }
 
         [Fact]
-        public void ToString_makes_a_nice_table()
+        public void ToString_makes_a_nice_table_with_1_item()
         {
             var inn = new Inn() {
                 Items = new List<Item> {
@@ -164,7 +164,7 @@ namespace GildedRose.Tests
         }
 
         [Fact]
-        public void ToString_makes_simple_table()
+        public void ToString_makes_simple_table_with_no_items()
         {
             var inn = new Inn() {
                 Items = new List<Item> ()
@@ -178,20 +178,20 @@ namespace GildedRose.Tests
         }
 
         [Fact]
-        public void ToString_makes_an_even_nicer_table()
+        public void ToString_makes_an_even_nicer_table_with_2_longer_items()
         {
             var inn = new Inn() {
                 Items = new List<Item> {
                     new Item{Name = "Sword", SellIn = 2, Quality = 14},
-                    new Item{Name = "Arrow", SellIn = 7, Quality = 9}
+                    new Item{Name = "Bow With 24 Arrows", SellIn = 7, Quality = 9}
                 }
             };
 
-            var table = "Item Name|Sell In|Quality" + "\n" + 
-                        "-------------------------" + "\n" +
-                        "Sword    |      2|     14" + "\n" + 
-                        "Arrow    |      7|      9" + "\n" + 
-                        "-------------------------" + "\n";
+            var table = "Item Name         |Sell In|Quality" + "\n" + 
+                        "----------------------------------" + "\n" +
+                        "Sword             |      2|     14" + "\n" + 
+                        "Bow With 24 Arrows|      7|      9" + "\n" + 
+                        "----------------------------------" + "\n";
 
             Assert.Equal(table, inn.ToString());
         }

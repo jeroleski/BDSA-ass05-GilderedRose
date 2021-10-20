@@ -1,107 +1,131 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
 namespace GildedRose.Console
 {
     public class Inn
     {
-        public IList<Item> Items {get; init;}
+
+        public static string testString = "Worng";
+        public IList<Item> Items;
+        public static void Main(string[] args)
+        {
+ 
+            System.Console.WriteLine("OMGHAI!");
+            var app = new Inn()
+            {
+                Items = new List<Item>
+                                          {
+                                              new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
+                                              new Item {Name = "Aged Brie", SellIn = 2, Quality = 0},
+                                              new Item {Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7},
+                                              new Item {Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80},
+                                              new Item
+                                                  {
+                                                      Name = "Backstage passes to a TAFKAL80ETC concert",
+                                                      SellIn = 15,
+                                                      Quality = 20
+                                                  },
+                                              new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+                                          }
+
+            };
+
+            app.UpdateQuality();
+            testString = "working";
+
+            //System.Console.ReadKey();
+
+        }
+
 
         public void UpdateQuality()
         {
+
             for (var i = 0; i < Items.Count; i++)
             {
-                var item = Items[i];
-
-                //ALL items selling days will decrease
-                //exept Sulfuras which never has to be sold
-                if (! item.IsSulfuras())
+                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
-                    item.SellIn -= 1;
+                    if (Items[i].Quality > 0)
+                    {
+                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                        {
+                            Items[i].Quality = Items[i].Quality - 1;
+                        }
+                    }
                 }
-                
-                //Aged Brie increases in quality
-                if (item.IsAgedBrie())
+                else
                 {
-                    item.ChangeQuality(1);
-                }//Backstage passes increases in quality
-                else if (item.IsBackstagePass())
+                    if (Items[i].Quality < 50)
+                    {
+                        Items[i].Quality = Items[i].Quality + 1;
+
+                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                        {
+                            if (Items[i].SellIn < 11)
+                            {
+                                if (Items[i].Quality < 50)
+                                {
+                                    Items[i].Quality = Items[i].Quality + 1;
+                                }
+                            }
+
+                            if (Items[i].SellIn < 6)
+                            {
+                                if (Items[i].Quality < 50)
+                                {
+                                    Items[i].Quality = Items[i].Quality + 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
-                    //But after the concert the quality will drop to 0
-                    if (item.SellIn < 0)
+                    Items[i].SellIn = Items[i].SellIn - 1;
+                }
+
+                if (Items[i].SellIn < 0)
+                {
+                    if (Items[i].Name != "Aged Brie")
                     {
-                        item.Quality = 0;
-                    }//If the concert is within 5 days the quality rises by 3
-                    else if (item.SellIn <= 5)
-                    {
-                        item.ChangeQuality(3);
-                    }//If the concert is within 10 days the quality rises by 2
-                    else if (item.SellIn <= 10)
-                    {
-                        item.ChangeQuality(2);
-                    }//If there are more than 10 days to the concert he quality only rises by 1
-                    else
-                    {
-                        item.ChangeQuality(1);
+                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                        {
+                            if (Items[i].Quality > 0)
+                            {
+                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                                {
+                                    Items[i].Quality = Items[i].Quality - 1;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                        }
                     }
-                }//Conjured items degrade double from standart items
-                else if (item.IsConjured())
-                {   //But only if they are not expired
-                    if (! item.IsExpired())
-                    {
-                        item.ChangeQuality(-2);
-                    }//For they decrease even more if they are
                     else
                     {
-                        item.ChangeQuality(-4);
-                    }
-                }//NORMAL items, which decreases in value
-                else if (! item.IsSulfuras())
-                {   //Before they expire
-                    if (! item.IsExpired())
-                    {
-                        item.ChangeQuality(-1);
-                    } //and double after they expuire
-                    else
-                    {
-                        item.ChangeQuality(-2);
+                        if (Items[i].Quality < 50)
+                        {
+                            Items[i].Quality = Items[i].Quality + 1;
+                        }
                     }
                 }
             }
         }
 
-        public override string ToString()
-        {
-            var longestName = 9;
-            var longestSellIn = 7;
-            var longestQuality = 7;
-            for (var i = 1; i < Items.Count; i++)
-            {
-                if (Items[i].Name.Length > longestName) longestName = Items[i].Name.Length;
-                if ((""+Items[i].SellIn).Length > longestSellIn) longestSellIn = (""+Items[i].SellIn).Length;
-                if ((""+Items[i].Quality).Length > longestQuality) longestQuality = (""+Items[i].Quality).Length;
-            }
-
-            var table = extendString("Item Name", longestName, true) + "|" + 
-                        extendString("Sell In", longestSellIn, true) + "|" + 
-                        extendString("Quality", longestQuality, true) + "\n";
-            table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
-            for (var i = 0; i < Items.Count; i++)
-            {
-                table += extendString(Items[i].Name, longestName, true) + "|" + 
-                        extendString(""+Items[i].SellIn, longestSellIn, false) + "|" + 
-                        extendString(""+Items[i].Quality, longestQuality, false) + "\n";
-            }
-            table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
-
-            return table;
-
-            string extendString(string s, int length, bool front)
-            {
-                if (front) return s + new string(' ', length - s.Length);
-                else return new string(' ', length - s.Length) + s;
-            }
-
-            string makeDashes(int length) => new string('-', length);
-        }
     }
+
+    public class Item
+    {
+        public string Name { get; set; }
+
+        public int SellIn { get; set; }
+
+        public int Quality { get; set; }
+    }
+
 }

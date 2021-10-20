@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GildedRose.Console
 {
@@ -26,11 +27,24 @@ namespace GildedRose.Console
                                           }
                           };
 
-            app.UpdateQuality();
-
+            System.Console.WriteLine("At the opening of The Gildered Rose the inventory looks like this:");
             System.Console.WriteLine(app.ToString());
 
-            System.Console.ReadKey();
+            for (;true;)
+            {
+                System.Console.WriteLine("Write a number to skip that many days ahead or write anything else to quit!");
+                var line = System.Console.ReadLine();
+                int days;
+                if (Int32.TryParse(line, out days))
+                {
+                    for (int d = 0; d < days; d++)
+                    {
+                        app.UpdateQuality();
+                    }
+                    System.Console.WriteLine(days + " day(s) has passed and the inventory looks like this:");
+                    System.Console.WriteLine(app.ToString());
+                } else break;
+            }            
         }
 
         public static void ChangeQuality(this Item item, int amount)

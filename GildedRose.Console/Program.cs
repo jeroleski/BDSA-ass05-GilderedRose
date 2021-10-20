@@ -44,7 +44,7 @@ namespace GildedRose.Console
                     System.Console.WriteLine(days + " day(s) has passed and the inventory looks like this:");
                     System.Console.WriteLine(app.ToString());
                 } else break;
-            }            
+            }
         }
 
         public static void ChangeQuality(this Item item, int amount)

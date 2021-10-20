@@ -155,7 +155,8 @@ namespace GildedRose.Tests
                 }
             };
 
-            var table = "Item Name|Sell In|Quality" + "\n" + 
+            var table = "-------------------------" + "\n" +
+                        "Item Name|Sell In|Quality" + "\n" + 
                         "-------------------------" + "\n" +
                         "Sword    |      2|     14" + "\n" + 
                         "-------------------------" + "\n";
@@ -170,7 +171,8 @@ namespace GildedRose.Tests
                 Items = new List<Item> ()
             };
 
-            var table = "Item Name|Sell In|Quality" + "\n" + 
+            var table = "-------------------------" + "\n" +
+                        "Item Name|Sell In|Quality" + "\n" + 
                         "-------------------------" + "\n" +
                         "-------------------------" + "\n";
 
@@ -187,13 +189,28 @@ namespace GildedRose.Tests
                 }
             };
 
-            var table = "Item Name         |Sell In|Quality" + "\n" + 
+            var table = "----------------------------------" + "\n" +
+                        "Item Name         |Sell In|Quality" + "\n" + 
                         "----------------------------------" + "\n" +
                         "Sword             |      2|     14" + "\n" + 
                         "Bow With 24 Arrows|      7|      9" + "\n" + 
                         "----------------------------------" + "\n";
 
             Assert.Equal(table, inn.ToString());
+        }
+
+        [Fact]
+        public void Main_doesnt_break()
+        {
+            var output = new System.IO.StringWriter();
+            System.Console.SetOut(output);
+
+            var input = new System.IO.StringReader("4\nq");
+            System.Console.SetIn(input);
+
+            Program.Main(new string[0]);
+
+            Assert.True(true);
         }
     }
 }

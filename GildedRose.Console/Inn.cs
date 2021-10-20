@@ -81,9 +81,10 @@ namespace GildedRose.Console
                 if ((""+Items[i].Quality).Length > longestQuality) longestQuality = (""+Items[i].Quality).Length;
             }
 
-            var table = extendString("Item Name", longestName, true) + "|" + 
-                        extendString("Sell In", longestSellIn, true) + "|" + 
-                        extendString("Quality", longestQuality, true) + "\n";
+            var table = makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
+            table += extendString("Item Name", longestName, true) + "|" + 
+                    extendString("Sell In", longestSellIn, true) + "|" + 
+                    extendString("Quality", longestQuality, true) + "\n";
             table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
             for (var i = 0; i < Items.Count; i++)
             {

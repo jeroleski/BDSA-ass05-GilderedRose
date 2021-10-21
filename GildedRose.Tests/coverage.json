@@ -4,416 +4,300 @@
       "GildedRose.Console.Inn": {
         "System.Void GildedRose.Console.Inn::Main(System.String[])": {
           "Lines": {
-            "13": 1,
-            "15": 1,
-            "16": 1,
-            "17": 1,
-            "18": 1,
-            "19": 1,
-            "20": 1,
-            "21": 1,
-            "22": 1,
-            "23": 1,
-            "24": 1,
-            "25": 1,
-            "26": 1,
-            "27": 1,
-            "28": 1,
-            "29": 1,
-            "30": 1,
-            "31": 1,
-            "32": 1,
-            "33": 1,
-            "35": 1,
-            "36": 1,
-            "40": 1
+            "13": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "39": 0
           },
           "Branches": []
         },
         "System.Void GildedRose.Console.Inn::UpdateQuality()": {
           "Lines": {
-            "44": 163,
-            "46": 662,
-            "47": 168,
-            "48": 168,
-            "49": 97,
-            "50": 97,
-            "51": 60,
-            "52": 60,
-            "53": 57,
-            "54": 57,
-            "55": 57,
-            "56": 60,
-            "57": 97,
-            "59": 71,
-            "60": 71,
-            "61": 59,
-            "62": 59,
-            "64": 59,
-            "65": 46,
-            "66": 46,
-            "67": 24,
-            "68": 24,
-            "69": 23,
-            "70": 23,
-            "71": 23,
-            "72": 24,
-            "74": 46,
-            "75": 9,
-            "76": 9,
-            "77": 9,
-            "78": 9,
-            "79": 9,
-            "80": 9,
-            "81": 46,
-            "82": 59,
-            "83": 71,
-            "85": 168,
-            "86": 165,
-            "87": 165,
-            "88": 165,
-            "90": 168,
-            "91": 75,
-            "92": 75,
-            "93": 65,
-            "94": 65,
-            "95": 63,
-            "96": 63,
-            "97": 26,
-            "98": 26,
-            "99": 26,
-            "100": 26,
-            "101": 26,
-            "102": 26,
-            "103": 63,
-            "105": 2,
-            "106": 2,
-            "107": 2,
-            "108": 65,
-            "110": 10,
-            "111": 10,
-            "112": 7,
-            "113": 7,
-            "114": 7,
-            "115": 10,
-            "116": 75,
-            "117": 168,
-            "118": 163
+            "43": 162,
+            "44": 810,
+            "45": 162,
+            "48": 162,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "53": 1,
+            "54": 161,
+            "55": 54,
+            "58": 54,
+            "59": 16,
+            "60": 16,
+            "61": 16,
+            "62": 38,
+            "63": 17,
+            "64": 17,
+            "65": 17,
+            "67": 21,
+            "68": 21,
+            "69": 21,
+            "70": 54,
+            "71": 54,
+            "72": 4,
+            "73": 4,
+            "74": 4,
+            "75": 54,
+            "76": 107,
+            "77": 2,
+            "79": 2,
+            "80": 105,
+            "81": 15,
+            "82": 15,
+            "83": 15,
+            "84": 15,
+            "85": 10,
+            "86": 10,
+            "87": 10,
+            "88": 15,
+            "90": 90,
+            "91": 90,
+            "92": 90,
+            "93": 90,
+            "95": 162,
+            "96": 10,
+            "97": 10,
+            "98": 10,
+            "99": 152,
+            "100": 11,
+            "101": 11,
+            "102": 11,
+            "104": 162,
+            "106": 162
           },
           "Branches": [
             {
-              "Line": 46,
-              "Offset": 899,
-              "EndOffset": 8,
+              "Line": 44,
+              "Offset": 498,
+              "EndOffset": 19,
               "Path": 1,
-              "Ordinal": 35,
-              "Hits": 168
+              "Ordinal": 23,
+              "Hits": 162
             },
             {
               "Line": 48,
-              "Offset": 36,
-              "EndOffset": 38,
+              "Offset": 45,
+              "EndOffset": 47,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 152
+              "Hits": 1
             },
             {
               "Line": 48,
-              "Offset": 36,
-              "EndOffset": 67,
+              "Offset": 45,
+              "EndOffset": 86,
               "Path": 1,
               "Ordinal": 1,
+              "Hits": 161
+            },
+            {
+              "Line": 54,
+              "Offset": 106,
+              "EndOffset": 111,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 54
+            },
+            {
+              "Line": 58,
+              "Offset": 128,
+              "EndOffset": 130,
+              "Path": 0,
+              "Ordinal": 4,
               "Hits": 16
             },
             {
-              "Line": 48,
-              "Offset": 70,
-              "EndOffset": 72,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 97
-            },
-            {
-              "Line": 50,
-              "Offset": 95,
-              "EndOffset": 97,
-              "Path": 0,
-              "Ordinal": 4,
-              "Hits": 60
-            },
-            {
-              "Line": 52,
-              "Offset": 127,
-              "EndOffset": 129,
-              "Path": 0,
-              "Ordinal": 6,
-              "Hits": 57
-            },
-            {
-              "Line": 52,
-              "Offset": 127,
-              "EndOffset": 168,
-              "Path": 1,
-              "Ordinal": 7,
-              "Hits": 60
-            },
-            {
-              "Line": 50,
-              "Offset": 95,
-              "EndOffset": 169,
+              "Line": 58,
+              "Offset": 128,
+              "EndOffset": 149,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 97
+              "Hits": 38
             },
             {
-              "Line": 48,
-              "Offset": 70,
-              "EndOffset": 175,
+              "Line": 62,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 17
+            },
+            {
+              "Line": 62,
+              "Offset": 166,
+              "EndOffset": 187,
               "Path": 1,
-              "Ordinal": 3,
-              "Hits": 71
+              "Ordinal": 7,
+              "Hits": 21
             },
             {
-              "Line": 60,
-              "Offset": 201,
-              "EndOffset": 206,
+              "Line": 71,
+              "Offset": 239,
+              "EndOffset": 241,
               "Path": 0,
               "Ordinal": 8,
-              "Hits": 59
+              "Hits": 4
             },
             {
-              "Line": 64,
-              "Offset": 275,
-              "EndOffset": 280,
+              "Line": 71,
+              "Offset": 239,
+              "EndOffset": 251,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 54
+            },
+            {
+              "Line": 54,
+              "Offset": 106,
+              "EndOffset": 257,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 107
+            },
+            {
+              "Line": 76,
+              "Offset": 277,
+              "EndOffset": 279,
               "Path": 0,
               "Ordinal": 10,
-              "Hits": 46
+              "Hits": 2
             },
             {
-              "Line": 66,
+              "Line": 76,
+              "Offset": 277,
+              "EndOffset": 286,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 105
+            },
+            {
+              "Line": 80,
               "Offset": 306,
               "EndOffset": 308,
               "Path": 0,
               "Ordinal": 12,
-              "Hits": 24
+              "Hits": 15
             },
             {
-              "Line": 68,
-              "Offset": 334,
-              "EndOffset": 336,
+              "Line": 84,
+              "Offset": 356,
+              "EndOffset": 358,
               "Path": 0,
               "Ordinal": 14,
-              "Hits": 23
+              "Hits": 10
             },
             {
-              "Line": 68,
-              "Offset": 334,
-              "EndOffset": 375,
+              "Line": 84,
+              "Offset": 356,
+              "EndOffset": 377,
               "Path": 1,
               "Ordinal": 15,
-              "Hits": 24
+              "Hits": 15
             },
             {
-              "Line": 66,
+              "Line": 80,
               "Offset": 306,
-              "EndOffset": 376,
+              "EndOffset": 380,
               "Path": 1,
               "Ordinal": 13,
-              "Hits": 46
+              "Hits": 90
             },
             {
-              "Line": 74,
-              "Offset": 400,
-              "EndOffset": 402,
+              "Line": 95,
+              "Offset": 432,
+              "EndOffset": 434,
               "Path": 0,
               "Ordinal": 16,
-              "Hits": 9
+              "Hits": 160
             },
             {
-              "Line": 76,
-              "Offset": 428,
-              "EndOffset": 430,
-              "Path": 0,
-              "Ordinal": 18,
-              "Hits": 9
-            },
-            {
-              "Line": 76,
-              "Offset": 428,
-              "EndOffset": 469,
-              "Path": 1,
-              "Ordinal": 19,
-              "Hits": 9
-            },
-            {
-              "Line": 74,
-              "Offset": 400,
-              "EndOffset": 470,
+              "Line": 95,
+              "Offset": 432,
+              "EndOffset": 446,
               "Path": 1,
               "Ordinal": 17,
-              "Hits": 46
-            },
-            {
-              "Line": 64,
-              "Offset": 275,
-              "EndOffset": 471,
-              "Path": 1,
-              "Ordinal": 11,
-              "Hits": 59
-            },
-            {
-              "Line": 60,
-              "Offset": 201,
-              "EndOffset": 472,
-              "Path": 1,
-              "Ordinal": 9,
-              "Hits": 71
-            },
-            {
-              "Line": 85,
-              "Offset": 504,
-              "EndOffset": 506,
-              "Path": 0,
-              "Ordinal": 20,
-              "Hits": 165
-            },
-            {
-              "Line": 85,
-              "Offset": 504,
-              "EndOffset": 545,
-              "Path": 1,
-              "Ordinal": 21,
-              "Hits": 168
-            },
-            {
-              "Line": 90,
-              "Offset": 569,
-              "EndOffset": 574,
-              "Path": 0,
-              "Ordinal": 22,
-              "Hits": 75
-            },
-            {
-              "Line": 92,
-              "Offset": 606,
-              "EndOffset": 611,
-              "Path": 0,
-              "Ordinal": 24,
-              "Hits": 65
-            },
-            {
-              "Line": 94,
-              "Offset": 643,
-              "EndOffset": 645,
-              "Path": 0,
-              "Ordinal": 26,
-              "Hits": 63
-            },
-            {
-              "Line": 96,
-              "Offset": 670,
-              "EndOffset": 672,
-              "Path": 0,
-              "Ordinal": 28,
-              "Hits": 26
-            },
-            {
-              "Line": 98,
-              "Offset": 704,
-              "EndOffset": 706,
-              "Path": 0,
-              "Ordinal": 30,
-              "Hits": 26
-            },
-            {
-              "Line": 98,
-              "Offset": 704,
-              "EndOffset": 745,
-              "Path": 1,
-              "Ordinal": 31,
-              "Hits": 26
-            },
-            {
-              "Line": 96,
-              "Offset": 670,
-              "EndOffset": 746,
-              "Path": 1,
-              "Ordinal": 29,
-              "Hits": 63
-            },
-            {
-              "Line": 94,
-              "Offset": 643,
-              "EndOffset": 749,
-              "Path": 1,
-              "Ordinal": 27,
               "Hits": 2
             },
             {
-              "Line": 92,
-              "Offset": 606,
-              "EndOffset": 807,
-              "Path": 1,
-              "Ordinal": 25,
+              "Line": 95,
+              "Offset": 451,
+              "EndOffset": 453,
+              "Path": 0,
+              "Ordinal": 18,
               "Hits": 10
             },
             {
-              "Line": 111,
-              "Offset": 833,
-              "EndOffset": 835,
-              "Path": 0,
-              "Ordinal": 32,
-              "Hits": 7
-            },
-            {
-              "Line": 111,
-              "Offset": 833,
-              "EndOffset": 874,
+              "Line": 95,
+              "Offset": 451,
+              "EndOffset": 466,
               "Path": 1,
-              "Ordinal": 33,
-              "Hits": 10
+              "Ordinal": 19,
+              "Hits": 152
             },
             {
-              "Line": 90,
-              "Offset": 569,
-              "EndOffset": 876,
-              "Path": 1,
-              "Ordinal": 23,
-              "Hits": 168
-            },
-            {
-              "Line": 46,
-              "Offset": 899,
-              "EndOffset": 904,
+              "Line": 99,
+              "Offset": 479,
+              "EndOffset": 481,
               "Path": 0,
-              "Ordinal": 34,
-              "Hits": 163
+              "Ordinal": 20,
+              "Hits": 11
+            },
+            {
+              "Line": 99,
+              "Offset": 479,
+              "EndOffset": 491,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 162
+            },
+            {
+              "Line": 44,
+              "Offset": 498,
+              "EndOffset": 503,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 162
             }
           ]
-        },
-        "System.Void GildedRose.Console.Inn::.cctor()": {
-          "Lines": {
-            "10": 1
-          },
-          "Branches": []
         }
       },
       "GildedRose.Console.Item": {
         "System.String GildedRose.Console.Item::get_Name()": {
           "Lines": {
-            "124": 813
+            "110": 731
           },
           "Branches": []
         },
         "System.Int32 GildedRose.Console.Item::get_SellIn()": {
           "Lines": {
-            "126": 664
+            "112": 549
           },
           "Branches": []
         },
         "System.Int32 GildedRose.Console.Item::get_Quality()": {
           "Lines": {
-            "128": 716
+            "114": 745
           },
           "Branches": []
         }

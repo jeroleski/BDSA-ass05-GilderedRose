@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
@@ -7,11 +8,11 @@ namespace GildedRose.Console
     public class Inn
     {
 
-        public static string testString = "Worng";
+        public static IList<Item> testList;
         public IList<Item> Items;
         public static void Main(string[] args)
         {
- 
+
             System.Console.WriteLine("OMGHAI!");
             var app = new Inn()
             {
@@ -32,92 +33,143 @@ namespace GildedRose.Console
 
             };
 
-            app.UpdateQuality();
-            testString = "working";
 
-            //System.Console.ReadKey();
+
+
+            int updateTimes = 1;
+            try
+            {
+                string input = System.Console.ReadLine();
+                updateTimes = Int32.Parse(input);
+
+            }
+            catch (Exception)
+            {
+
+            }
+            for (int i = 0; i < updateTimes; i++)
+            {
+                app.UpdateQuality();
+                System.Console.WriteLine(app.ToString());
+            }
+            testList = app.Items;
 
         }
 
 
         public void UpdateQuality()
         {
-
-            for (var i = 0; i < Items.Count; i++)
+            foreach (Item items in Items)
             {
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+
+
+                if (items.Name.Contains("Conjured"))
                 {
-                    if (Items[i].Quality > 0)
+                    items.Quality -= 2;
+                    items.SellIn--;
+
+                }
+                else if (items.Name.Contains("Backstage passes to a"))
+                {
+
+
+                    if (items.SellIn <= 5)
                     {
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
+                        items.Quality += 3;
+                    }
+                    else if (items.SellIn <= 10)
+                    {
+                        items.Quality += 2;
+                    }
+                    else
+                    {
+                        items.Quality++;
+                    }
+                    items.SellIn--;
+                    if (items.SellIn <= 0)
+                    {
+                        items.Quality = 0;
+                    }
+                }
+                else if (items.Name.Equals("Sulfuras, Hand of Ragnaros"))
+                {
+                    // no changes in this items quality  
+                }
+                else if (items.Name.Equals("Aged Brie"))
+                {
+                    items.Quality++;
+                    items.SellIn--;
+                    if (items.SellIn < 0)
+                    {
+                        items.Quality++;
                     }
                 }
                 else
                 {
-                    if (Items[i].Quality < 50)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
-
-                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (Items[i].SellIn < 11)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
-
-                            if (Items[i].SellIn < 6)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
-                        }
-                    }
+                    items.Quality--;
+                    items.SellIn--;
                 }
 
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                if (items.Name != "Sulfuras, Hand of Ragnaros" && items.Quality > 50)
                 {
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    items.Quality = 50;
+                }
+                else if (items.Quality < 0)
+                {
+                    items.Quality = 0;
                 }
 
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name != "Aged Brie")
-                    {
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (Items[i].Quality > 0)
-                            {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                                {
-                                    Items[i].Quality = Items[i].Quality - 1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
-                        }
-                    }
-                    else
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
-                    }
-                }
             }
+
         }
 
+
+        public override string ToString()
+        {
+            var longestName = 9;
+            var longestSellIn = 7;
+            var longestQuality = 7;
+            for (var i = 1; i < Items.Count; i++)
+            {
+                if (Items[i].Name.Length > longestName) longestName = Items[i].Name.Length;
+                if (("" + Items[i].SellIn).Length > longestSellIn) longestSellIn = ("" + Items[i].SellIn).Length;
+                if (("" + Items[i].Quality).Length > longestQuality) longestQuality = ("" + Items[i].Quality).Length;
+            }
+
+            var table = makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
+            table += extendString("Item Name", longestName, true) + "|" +
+                     extendString("Sell In", longestSellIn, true) + "|" +
+                     extendString("Quality", longestQuality, true) + "\n";
+            table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
+            for (var i = 0; i < Items.Count; i++)
+            {
+                table += extendString(Items[i].Name, longestName, true) + "|" +
+                         extendString("" + Items[i].SellIn, longestSellIn, false) + "|" +
+                         extendString("" + Items[i].Quality, longestQuality, false) + "\n";
+            }
+            table += makeDashes(longestName + longestSellIn + longestQuality + 2) + "\n";
+
+            return table;
+
+            string extendString(string s, int length, bool front)
+            {
+                if (front) return s + new string(' ', length - s.Length);
+                else return new string(' ', length - s.Length) + s;
+            }
+
+            string makeDashes(int length) => new string('-', length);
+        }
+
+
+
+
+
     }
+
+
+
+
+
 
     public class Item
     {
@@ -127,5 +179,6 @@ namespace GildedRose.Console
 
         public int Quality { get; set; }
     }
+
 
 }

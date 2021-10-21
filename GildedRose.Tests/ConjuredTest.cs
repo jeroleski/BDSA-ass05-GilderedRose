@@ -18,7 +18,7 @@ namespace GildedRose.Tests
 
             };
 
-            var expected =   new Item {Name = "Conjured Mana Cake", SellIn = 2, Quality = 5};
+            var expected =   new Item {Name = "Conjured Mana Cake", SellIn = 2, Quality = 4};
                                         
             //When
             for (int i = 0; i < 1; i++)

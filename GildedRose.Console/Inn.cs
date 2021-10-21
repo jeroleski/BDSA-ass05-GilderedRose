@@ -12,8 +12,21 @@ namespace GildedRose.Console
         public IList<Item> Items;
         public static void Main(string[] args)
         {
+            System.Console.WriteLine("Write days open");
+            string input = System.Console.ReadLine();
+            RunInn(input);
 
-            System.Console.WriteLine("OMGHAI!");
+        }
+          public static void RunInn(string input)
+        {
+            int days = 1;
+            try
+            {
+                
+                days = Int32.Parse(input);
+            }
+            catch (Exception)
+            {}
             var app = new Inn()
             {
                 Items = new List<Item>
@@ -35,19 +48,7 @@ namespace GildedRose.Console
 
 
 
-
-            int updateTimes = 1;
-            try
-            {
-                string input = System.Console.ReadLine();
-                updateTimes = Int32.Parse(input);
-
-            }
-            catch (Exception)
-            {
-
-            }
-            for (int i = 0; i < updateTimes; i++)
+            for (int i = 0; i < days; i++)
             {
                 app.UpdateQuality();
                 System.Console.WriteLine(app.ToString());
@@ -55,7 +56,6 @@ namespace GildedRose.Console
             testList = app.Items;
 
         }
-
 
         public void UpdateQuality()
         {

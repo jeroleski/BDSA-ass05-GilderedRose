@@ -7,12 +7,11 @@ namespace GildedRose.Tests
     public class mainTest
     {
       //remove the try from line 40-49 in inn
-      //[Fact]
+      [Fact]
       public void TestofMain()
       {
       //Given
-      Inn.Main(new string[0]);
-        var expected = new List<Item>
+      var expected = new List<Item>
                                           {
                                               new Item {Name = "+5 Dexterity Vest", SellIn = 9, Quality = 19},
                                               new Item {Name = "Aged Brie", SellIn = 1, Quality = 1},
@@ -26,9 +25,8 @@ namespace GildedRose.Tests
                                                   },
                                               new Item {Name = "Conjured Mana Cake", SellIn = 2, Quality = 4}
                                           };
-      
-       
-      //When
+                                          
+       Inn.RunInn("1");
         var actual = Inn.testList;
       
       //Then
